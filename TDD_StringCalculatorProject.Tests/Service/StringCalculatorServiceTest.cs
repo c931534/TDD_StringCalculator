@@ -7,10 +7,11 @@ namespace TDD_StringCalculatorProject.Tests.Service;
 [TestOf(typeof(StringCalculatorService))]
 public class StringCalculatorServiceTest
 {
-
     [Test]
-    public void METHOD()
+    public void return_0_when_stringEmpty()
     {
-        
+        StringCalculatorService stringCalculatorService = new();
+        var add = stringCalculatorService.Add(string.Empty);
+        Assert.That(add, Is.EqualTo(0));
     }
 }
