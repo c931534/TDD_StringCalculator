@@ -35,6 +35,12 @@ public class StringCalculatorServiceTest
     [Test]
     public void return_sum_with_changeline()
     {
-        Assert.That(_stringCalculatorService.Add("1/n2,4"), Is.EqualTo(7));
+        Assert.That(_stringCalculatorService.Add("1\n2,4"), Is.EqualTo(7));
+    }
+
+    [Test]
+    public void return_sum_can_change_split()
+    {
+        Assert.That(_stringCalculatorService.Add("//;\n1;2"), Is.EqualTo(3));
     }
 }

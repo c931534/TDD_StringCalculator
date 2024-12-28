@@ -10,7 +10,7 @@ public class StringCalculatorService
         {
             var changeLineSum = 0;
 
-            var changeLineSplit = numbers.Split("/n");
+            var changeLineSplit = numbers.Split("\n");
             if (changeLineSplit.Length > 1)
             {
                 changeLineSum = int.Parse(changeLineSplit[0]);
