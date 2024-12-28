@@ -6,21 +6,13 @@ public class StringCalculatorService
 {
     public int Add(string intString)
     {
-        if (intString != null)
+        if (!string.IsNullOrWhiteSpace(intString))
         {
-            var split = intString.Split(',');
-            var sum = 0;
-            foreach (var s in split)
-            {
-                var number = Convert.ToInt32(s);
-                sum += number;
-            }
-            return sum;
+            return intString.Split(',').Sum(s => Convert.ToInt32(s));
         }
-        if(string.IsNullOrWhiteSpace(intString))
+        else
+        {
             return 0;
-        
-        return 0;
+        }
     }
-        
 }
