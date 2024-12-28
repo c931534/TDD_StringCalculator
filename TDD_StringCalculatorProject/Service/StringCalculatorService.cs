@@ -9,15 +9,10 @@ public class StringCalculatorService
     {
         if (!string.IsNullOrWhiteSpace(numbers))
         {
-
-            // 使用正則表達式提取正整數
-            var matches = Regex.Matches(numbers, @"\d+");
-            List<int> numberList = matches
-                .Select(m => int.Parse(m.Value))
-                .ToList();
-
             // 計算正整數的總和
-            return numberList.Sum();
+            return Regex.Matches(numbers, @"\d+")
+                .Select(m => int.Parse(m.Value))
+                .ToList().Sum();
         }
         else
         {
