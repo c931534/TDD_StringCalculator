@@ -1,18 +1,14 @@
 ﻿using System.Net.Sockets;
-using System.Text.RegularExpressions;
 
 namespace TDD_StringCalculatorProject.Service;
 
 public class StringCalculatorService
 {
-    public int Add(string numbers)
+    public int Add(string intString)
     {
-        if (!string.IsNullOrWhiteSpace(numbers))
+        if (!string.IsNullOrWhiteSpace(intString))
         {
-            // 計算正整數的總和
-            return Regex.Matches(numbers, @"\d+")
-                .Select(m => int.Parse(m.Value))
-                .ToList().Sum();
+            return intString.Split(',').Sum(s => Convert.ToInt32(s));
         }
         else
         {
