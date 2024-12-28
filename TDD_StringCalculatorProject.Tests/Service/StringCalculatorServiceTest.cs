@@ -31,4 +31,10 @@ public class StringCalculatorServiceTest
     {
         Assert.That(_stringCalculatorService.Add("24"), Is.EqualTo(24));
     }
+    
+    [Test]
+    public void return_sum_with_other_split()
+    {
+        Assert.That(_stringCalculatorService.Add("1/n2,4"), Is.EqualTo(7));
+    }
 }
