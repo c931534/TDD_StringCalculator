@@ -19,19 +19,19 @@ public class StringCalculatorServiceTest
     {
         Assert.That(_stringCalculatorService.Add(string.Empty), Is.EqualTo(0));
     }
-    
+
     [Test]
     public void return_sum()
     {
         Assert.That(_stringCalculatorService.Add("2,4"), Is.EqualTo(6));
     }
-    
+
     [Test]
     public void return_sum_when_Single()
     {
         Assert.That(_stringCalculatorService.Add("24"), Is.EqualTo(24));
     }
-    
+
     [Test]
     public void return_sum_with_changeline()
     {
