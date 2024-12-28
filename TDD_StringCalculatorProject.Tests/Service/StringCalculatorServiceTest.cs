@@ -33,7 +33,7 @@ public class StringCalculatorServiceTest
     }
     
     [Test]
-    public void return_sum_with_other_split()
+    public void return_sum_with_changeline()
     {
         Assert.That(_stringCalculatorService.Add("1/n2,4"), Is.EqualTo(7));
     }
