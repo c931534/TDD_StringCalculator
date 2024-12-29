@@ -24,7 +24,7 @@ public class StringCalculatorService
                 throw new ArgumentException($"Negatives not allowed: {splitNumber}");
             }
 
-            return splitList.Where(s => int.TryParse(s, out _))
+            return splitList.Where(s => int.TryParse(s, out int t) && t < 1000)
                 .Sum(s => Convert.ToInt32(s));
         }
 
