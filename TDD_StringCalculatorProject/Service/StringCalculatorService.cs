@@ -18,6 +18,20 @@ public class StringCalculatorService
                 }
             }
 
+            var splitList = splitArray.Length > 1
+                ? SplitString(splitArray[1], splitChar)
+                : SplitString(numbers, splitChar);
+            splitList.Add(splitNumber.ToString());
+            foreach (var number in splitList)
+            {
+                if (int.TryParse(number, out splitNumber))
+                {
+                    if (splitNumber < 0)
+                        throw new ArgumentException($"Negatives not allowed: {splitNumber}");
+                }
+            }
+            
+            
             return (splitArray.Length > 1
                        ? SplitString(splitArray[1], splitChar)
                        : SplitString(numbers, splitChar))
