@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using TDD_StringCalculatorProject.Service;
 
 namespace TDD_StringCalculatorProject.Tests.Service;
@@ -42,5 +43,18 @@ public class StringCalculatorServiceTest
     public void return_sum_can_change_split()
     {
         Assert.That(_stringCalculatorService.Add("//;\n1;2"), Is.EqualTo(3));
+    }
+    
+    [Test]
+    public void return_sum_not_allow_negatives()
+    {
+        // Arrange
+        var input = "//;\n1;2;-5";
+
+        // Act & Assert
+        var ex = Assert.Throws<ArgumentException>(() => _stringCalculatorService.Add(input));
+
+        // Verify exception message
+        Assert.That(ex.Message, Is.EqualTo("Negatives not allowed: -5"));
     }
 }
