@@ -63,4 +63,10 @@ public class StringCalculatorServiceTest
     {
         Assert.That(_stringCalculatorService.Add("//[***]\n1***2***4"), Is.EqualTo(7));
     }
+    
+    [Test]
+    public void return_sum_split_can_be_multi_symbol()
+    {
+        Assert.That(_stringCalculatorService.Add("//[*][%]\\n1*2%3&5"), Is.EqualTo(11));
+    }
 }
