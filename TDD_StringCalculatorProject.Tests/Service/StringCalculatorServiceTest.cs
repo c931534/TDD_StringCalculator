@@ -48,13 +48,13 @@ public class StringCalculatorServiceTest
     [Test]
     public void return_sum_not_allow_negatives()
     {
-        // Arrange
-        var input = "//;\n1;2;-5";
-
-        // Act & Assert
-        var ex = Assert.Throws<ArgumentException>(() => _stringCalculatorService.Add(input));
-
-        // Verify exception message
+        var ex = Assert.Throws<ArgumentException>(() => _stringCalculatorService.Add("//;\n1;2;-5"));
         Assert.That(ex.Message, Is.EqualTo("Negatives not allowed: -5"));
+    }
+    
+    [Test]
+    public void return_sum_ingore_bigger_than_1000()
+    {
+        Assert.That(_stringCalculatorService.Add("//;\n1;2;1002"), Is.EqualTo(3));
     }
 }
