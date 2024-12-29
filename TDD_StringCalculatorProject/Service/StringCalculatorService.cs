@@ -18,29 +18,26 @@ public class StringCalculatorService
                 }
             }
 
-            var splitList = splitArray.Length > 1
-                ? SplitString(splitArray[1], splitChar)
-                : SplitString(numbers, splitChar);
-            splitList.Add(splitNumber.ToString());
-            foreach (var number in splitList)
+            var splitList = MergeSplitList( splitArray, splitChar, splitNumber);
+            if (splitList.Any(number => int.TryParse(number, out splitNumber) && splitNumber < 0))
             {
-                if (int.TryParse(number, out splitNumber))
-                {
-                    if (splitNumber < 0)
-                        throw new ArgumentException($"Negatives not allowed: {splitNumber}");
-                }
+                throw new ArgumentException($"Negatives not allowed: {splitNumber}");
             }
-            
-            
-            return (splitArray.Length > 1
-                       ? SplitString(splitArray[1], splitChar)
-                       : SplitString(numbers, splitChar))
-                   .Where(s => int.TryParse(s, out _)) // 過濾掉非數字項目
-                   .Sum(s => Convert.ToInt32(s))
-                   + splitNumber;
+
+            return splitList.Where(s => int.TryParse(s, out _))
+                .Sum(s => Convert.ToInt32(s));
         }
 
         return 0;
+    }
+
+    private List<string> MergeSplitList(string[] splitArray, string splitChar, int splitNumber)
+    {
+        var result = splitArray.Length > 1
+            ? SplitString(splitArray[1], splitChar)
+            : SplitString(splitArray[0], splitChar);
+        result.Add(splitNumber.ToString());
+        return result;
     }
 
     private List<string> SplitString(string numbers, string splitChar)
