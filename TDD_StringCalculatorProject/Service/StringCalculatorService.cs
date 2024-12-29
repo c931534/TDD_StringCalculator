@@ -15,6 +15,10 @@ public class StringCalculatorService
                 if (!int.TryParse(splitArray[0], out splitNumber))
                 {
                     splitChar = splitArray[0].Substring(splitArray[0].Length - 1);
+                    if (splitArray[0].Contains("["))
+                    {
+                        splitChar = splitArray[0].Substring(3, splitArray[0].Length - 4);
+                    }
                 }
             }
 

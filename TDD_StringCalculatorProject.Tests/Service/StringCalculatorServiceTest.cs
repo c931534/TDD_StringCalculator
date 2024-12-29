@@ -61,6 +61,6 @@ public class StringCalculatorServiceTest
     [Test]
     public void return_sum_split_can_be_any_length()
     {
-        Assert.That(_stringCalculatorService.Add("//[***]\\n1***2***4"), Is.EqualTo(7));
+        Assert.That(_stringCalculatorService.Add("//[***]\n1***2***4"), Is.EqualTo(7));
     }
 }
